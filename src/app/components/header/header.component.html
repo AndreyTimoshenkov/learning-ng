@@ -4,10 +4,11 @@
 			mat-icon-button
 			class="example-icon"
 			aria-label="Example icon-button with menu icon"
+			(click)="onMenuClick()"
 		>
 			<mat-icon>menu</mat-icon>
 		</button>
-		<img class="favicon" src="{{ faviconSrc }}" alt="faviconSrc" />
+		<img class="favicon" [src]="faviconSrc" alt="faviconSrc" />
 		<span>{{ title }}</span>
 		<span class="example-spacer"></span>
 		<button
@@ -21,6 +22,7 @@
 			mat-icon-button
 			class="example-icon"
 			aria-label="Example icon-button with share icon"
+			(click)="onShareClick($event)"
 		>
 			<mat-icon>share</mat-icon>
 		</button>

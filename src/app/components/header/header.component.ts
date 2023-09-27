@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
 	readonly title = 'My Angular Learning App';
 	readonly faviconSrc = '../../../favicon.ico';
+
+	onMenuClick() {
+		console.log('Menu click');
+	}
+	onShareClick(event: Event) {
+		event.stopPropagation();
+		console.log('onShareClick');
+	}
 }
