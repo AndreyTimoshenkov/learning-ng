@@ -12,5 +12,5 @@ export class CardComponent {
     event.stopPropagation();
     console.log('onBuyClick');
   }
-  public product: IProduct = productMock;
+  product: IProduct = productMock;
 }
