@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IProduct } from '../product.interface';
-import { productMock } from '../product.mock';
+import { IProduct } from '../../../shared/products/product.interface';
+import { productMock } from '../../../shared/products/product.mock';
 
 @Component({
   selector: 'app-card',
