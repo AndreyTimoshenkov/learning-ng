@@ -1,0 +1,17 @@
+<div class="imgContainer">
+  <div
+    class="leftClickBtn"
+    role="button"
+    tabIndex="0"
+    (click)="onButtonClick(-1)"
+  ></div>
+  <div class="imgDiv">
+    <img [src]="productImages[index].url" alt="alt" />
+  </div>
+  <div
+    role="button"
+    tabIndex="0"
+    (click)="onButtonClick(1)"
+    class="rightClickBtn"
+  ></div>
+</div>
