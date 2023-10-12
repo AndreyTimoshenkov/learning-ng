@@ -13,11 +13,8 @@ img {
 
 .leftClickBtn,
 .rightClickBtn {
-  align-items: center;
   height: 100%;
-  /* border-radius: px; */
-  /* border: 1px solid rgba(66, 66, 66, 0.2); */
-  margin: auto;
+  align-items: center;
   min-width: 50px;
   display: flex;
   justify-content: center;
@@ -28,15 +25,6 @@ img {
     0 0 1em rgba(66, 66, 66, 0.2),
     0 0 0.2em black;
   cursor: pointer;
-  user-select: auto;
-}
-
-.leftClickBtn::after {
-  content: '◀';
-}
-
-.rightClickBtn::after {
-  content: '▶';
 }
 
 .leftClickBtn:hover,
@@ -45,10 +33,10 @@ img {
 }
 
 .imgDiv {
-  flex-shrink: 1;
+  /* flex-shrink: 1; */
   display: flex;
   overflow: hidden;
   justify-content: center;
   padding: 20px;
-  user-select: none;
+  /* user-select: none; */
 }

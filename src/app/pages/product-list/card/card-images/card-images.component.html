@@ -1,19 +1,18 @@
 <div class="imgContainer">
-  <div
-    class="leftClickBtn"
-    role="button"
-    tabIndex="0"
-    (click)="onButtonClick(-1)"
-    tabIndex="0"
-  ></div>
+  <button class="leftClickBtn" (click)="onButtonClick(-1)">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+  </button>
   <div class="imgDiv">
     <img [src]="productImages[index].url" alt="alt" />
   </div>
-  <div
-    role="button"
-    tabIndex="0"
-    (click)="onButtonClick(1)"
-    class="rightClickBtn"
-    tabIndex="0"
-  ></div>
+  <button (click)="onButtonClick(1)" class="rightClickBtn">
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
 </div>
+
+<!-- <ng-template #arrow1>
+  <mat-icon>keyboard_arrow_left</mat-icon>
+</ng-template>
+<ng-template #arrow2>
+  <mat-icon>keyboard_arrow_right</mat-icon>
+</ng-template> -->
