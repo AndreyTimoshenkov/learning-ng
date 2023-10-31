@@ -11,7 +11,7 @@ describe('CardImagesComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CardImagesComponent],
+      imports: [CardImagesComponent],
     });
     fixture = TestBed.createComponent(CardImagesComponent);
     component = fixture.componentInstance;
