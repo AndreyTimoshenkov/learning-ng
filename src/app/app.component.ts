@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CardComponent } from './pages/product-list/card/card.component';
+import { ProductListComponent } from './pages/product-list/product-list.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { CardComponent } from './pages/product-list/card/card.component';
     HeaderComponent,
     SidenavComponent,
     CardComponent,
+    ProductListComponent,
   ],
 })
 export class AppComponent {
