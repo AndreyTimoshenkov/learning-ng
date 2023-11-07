@@ -3,16 +3,9 @@
     <mat-icon>keyboard_arrow_left</mat-icon>
   </button>
   <div class="imgDiv">
-    <img [src]="productImages[index].url" alt="alt" />
+    <img [src]="productImages?.[index]?.url" alt="alt" />
   </div>
   <button (click)="onButtonClick(1)" class="rightClickBtn">
     <mat-icon>keyboard_arrow_right</mat-icon>
   </button>
 </div>
-
-<!-- <ng-template #arrow1>
-  <mat-icon>keyboard_arrow_left</mat-icon>
-</ng-template>
-<ng-template #arrow2>
-  <mat-icon>keyboard_arrow_right</mat-icon>
-</ng-template> -->

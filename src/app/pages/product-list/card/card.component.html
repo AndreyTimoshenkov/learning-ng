@@ -3,23 +3,29 @@
     <img
       mat-card-avatar
       class="example-header-image"
-      [alt]="product.name"
-      [src]="product.images[2].url"
+      [alt]="product?.name"
+      [src]="product?.images?.[2]?.url"
     />
-    <mat-card-title>{{ product.name }}</mat-card-title>
+    <mat-card-title>{{ product?.name }}</mat-card-title>
     <mat-card-subtitle>{{
-      product.subCategory
+      product?.subCategory
     }}</mat-card-subtitle>
   </mat-card-header>
-  <!-- <img mat-card-image [src]="product.images[0].url" [alt]="product.name" /> -->
-  <app-card-images></app-card-images>
+  <app-card-images
+    *ngIf="productImages"
+    [productImages]="productImages"
+  ></app-card-images>
   <mat-card-content>
-    <h1 class="price">{{ product.price }}</h1>
+    <h1 class="price">{{ product?.price }}</h1>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>LIKE</button>
     <button mat-button>SHARE</button>
-    <button mat-button (click)="onBuyClick($event)">
+    <button
+      mat-button
+      [disabled]="!this.product"
+      (click)="onProductBuy($event)"
+    >
       BUY
     </button>
   </mat-card-actions>

@@ -1,0 +1,6 @@
+<app-card
+  *ngFor="let product of products"
+  class="card"
+  [product]="product"
+  (buy)="onProductBuy($event)"
+></app-card>
