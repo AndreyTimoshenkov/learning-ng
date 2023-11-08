@@ -20,11 +20,11 @@ export class CardImagesComponent {
     if (this.productImages == undefined) {
       return;
     }
-    if (
-      newIndex >= this.productImages.length ||
-      newIndex < 0
-    ) {
-      return;
+    if (newIndex >= this.productImages.length) {
+      this.index -= this.productImages.length - delta;
+    }
+    if (newIndex < 0) {
+      this.index += this.productImages.length + delta;
     }
     this.index += delta;
   }

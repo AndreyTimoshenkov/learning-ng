@@ -16,17 +16,22 @@
     [productImages]="productImages"
   ></app-card-images>
   <mat-card-content>
-    <h1 class="price">{{ product?.price }}</h1>
+    <h1 class="price">
+      {{
+        product?.price
+          | currency: 'RUB' : 'symbol-narrow' : '0.2-2'
+      }}
+    </h1>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <!-- <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button> -->
     <button
       mat-button
       [disabled]="!this.product"
       (click)="onProductBuy($event)"
     >
-      BUY
+      <h2>Добавить в корзину</h2>
     </button>
   </mat-card-actions>
 </mat-card>
