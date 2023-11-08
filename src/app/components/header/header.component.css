@@ -1,9 +1,13 @@
 .example-spacer {
-	flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .favicon {
-	width: 30px;
-	height: 30px;
-	padding-right: 0.5em;
+  width: 30px;
+  height: 30px;
+  padding-right: 0.5em;
+}
+
+mat-toolbar {
+  background-color: #6002ee;
 }

@@ -2,6 +2,8 @@
   width: 400px;
   margin: 0 auto;
   border: 1px solid #f1e7e8;
+  background-color: #6002ee;
+  border-radius: 2%;
 }
 
 mat-card-header {
