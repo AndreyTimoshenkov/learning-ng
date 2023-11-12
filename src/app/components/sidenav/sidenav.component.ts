@@ -1,12 +1,17 @@
 import {
   Component,
-  EventEmitter,
-  Input,
-  Output,
+  ContentChild,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import {
+  MatDrawer,
+  MatSidenavModule,
+} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-sidenav',
@@ -19,14 +24,36 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css'],
 })
-export class SidenavComponent {
-  @Input() isSideNavOpened = false;
+export class SidenavComponent implements OnInit {
+  ngOnInit(): void {
+    this.insertNavigationTemplate();
+  }
 
-  @Output() isSideNavOpenedChange =
-    new EventEmitter<boolean>();
+  // @Input() set navigationTemplate(template: TemplateRef<unknown>) {
+  //   this.viewport?.clear();
+  //   this.viewport?.createEmbeddedView(template);
+  // }
+
+  @ViewChild('matDrawer', { static: true })
+  private readonly drawerComponent?: MatDrawer;
+
+  @ViewChild('viewport', {
+    static: true,
+    read: ViewContainerRef,
+  })
+  private readonly viewport?: ViewContainerRef;
+
+  @ContentChild('navigationTemplate', { static: true })
+  private readonly navigationTemplate?: TemplateRef<unknown>;
+
+  private insertNavigationTemplate() {
+    if (this.navigationTemplate)
+      this.viewport?.createEmbeddedView(
+        this.navigationTemplate,
+      );
+  }
 
   toggleSideNavOpened() {
-    // this.isSideNavOpened = !this.isSideNavOpened;
-    this.isSideNavOpenedChange.emit(!this.isSideNavOpened);
+    this.drawerComponent?.toggle();
   }
 }

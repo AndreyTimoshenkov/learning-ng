@@ -24,11 +24,6 @@ export class HeaderComponent {
 
   @Output() readonly MenuClick = new EventEmitter<Event>();
 
-  // onMenuClickFromHeader(event: Event) {
-  //   console.log('onMenuClickFromHeader')
-  //   this.MenuClick.next(event)
-  // }
-
   onFavClick(event: Event) {
     event.stopPropagation();
     console.log('onFavClick', event);

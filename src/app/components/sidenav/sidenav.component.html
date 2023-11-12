@@ -1,11 +1,13 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer
+    #matDrawer
     class="example-sidenav"
     mode="side"
-    [opened]="isSideNavOpened"
   >
-    <p>Auto-resizing sidenav</p>
-    <button mat-raised-button>Toggle extra text</button>
+    <!-- <p>Auto-resizing sidenav</p>
+    <button mat-raised-button>Toggle extra text</button> -->
+    <!-- <div #viewport></div> -->
+    <ng-container #viewport></ng-container>
   </mat-drawer>
 
   <div class="example-sidenav-content">

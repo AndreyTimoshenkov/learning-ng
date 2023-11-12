@@ -3,6 +3,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CardComponent } from './pages/product-list/card/card.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
+import { MatListModule } from '@angular/material/list';
+import { applicationConfigMock } from './shared/products/app-config/app-config.mock';
+import { PopupHostComponent } from './components/popup-host/popup-host.component';
 
 @Component({
   selector: 'app-root',
@@ -14,21 +17,31 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
     SidenavComponent,
     CardComponent,
     ProductListComponent,
+    MatListModule,
+    PopupHostComponent,
   ],
 })
 export class AppComponent {
   title = 'learning-ng';
+  readonly applicationConfig = applicationConfigMock;
 
-  isSideNavOpenedfromApp = false;
+  switchTemplate = false;
+  closeTemplate = true;
 
-  onMenuClickFromApp() {
-    // console.log('click from AppComponent', event)
-    this.isSideNavOpenedfromApp =
-      !this.isSideNavOpenedfromApp;
+  constructor() {
+    setTimeout(() => {
+      this.switchTemplate = !this.switchTemplate;
+      this.closeTemplate = !this.closeTemplate;
+    }, 3000);
+
+    setTimeout(() => {
+      this.switchTemplate = !this.switchTemplate;
+      this.closeTemplate = !this.closeTemplate;
+    }, 6000);
+
+    setTimeout(() => {
+      this.switchTemplate = !this.switchTemplate;
+      this.closeTemplate = !this.closeTemplate;
+    }, 9000);
   }
-
-  // onMenuClick(event: Event) {
-  //   console.log('onMenuClick', event);
-  //
-  // }
 }
