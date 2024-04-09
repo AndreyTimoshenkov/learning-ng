@@ -1,8 +1,20 @@
-<app-header
-  (MenuClick)="sidenav.toggleSideNavOpened()"
-></app-header>
-<!-- <app-product-list></app-product-list> -->
-<app-sidenav #sidenav>
+<app-header></app-header>
+<!-- (MenuClick)="sidenav.toggleSideNavOpened()" -->
+
+<!-- [ngIf]="productList" [ngIfElse]="loading" -->
+<div ngIf="productList">
+
+  <app-product-list appScroll [products]="productList"></app-product-list>
+</div>
+
+<ng-template #loading [ngIf]="showSpinner">
+  <mat-progress-spinner
+    mode="indeterminate" 
+    color="primary"
+  ></mat-progress-spinner>
+</ng-template>
+
+<!-- <app-sidenav #sidenav>
   <ng-template #navigationTemplate>
     {{ title }}
     <mat-list role="list">
@@ -10,18 +22,27 @@
       <mat-list-item role="listitem">Item 2</mat-list-item>
       <mat-list-item role="listitem">Item 3</mat-list-item>
     </mat-list>
-  </ng-template></app-sidenav
->
+  </ng-template>
+</app-sidenav> -->
 
-<app-popup-host
-  [template]="!closeTemplate ? first : null"
-></app-popup-host>
 
-<ng-template #first>
-  <h2>First</h2>
-  <p>This is the first template</p>
-</ng-template>
-<ng-template #second>
-  <h2>Second</h2>
-  <p>This is the second template</p>
-</ng-template>
+<!-- <app-header
+    [applicationConfig]="applicationConfig"
+    (menuClick)="sidenav.toggleSidenavOpened()"
+></app-header>
+<app-sidenav #sidenav>
+    <ng-template #navigationTemplate>
+    <ng-container ngProjectAs="drawer-content">
+        <h2>{{ applicationConfig.title }}</h2>
+        <mat-list role="list">
+            <mat-list-item appInsertShadow role="listitem">Item 1</mat-list-item>
+            <mat-list-item appInsertShadow role="listitem">Item 2</mat-list-item>
+            <mat-list-item appInsertShadow role="listitem">Item 3</mat-list-item>
+        </mat-list>
+    </ng-container>
+    </ng-template>
+    <h2>Hello</h2>
+    <app-products-list></app-products-list>
+</app-sidenav>
+
+<app-popup-host></app-popup-host> -->

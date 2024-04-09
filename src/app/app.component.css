@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-progress-spinner {
+  margin: auto;
+  margin-top: 50px;
+
+}

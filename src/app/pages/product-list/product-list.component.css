@@ -1,4 +1,9 @@
-section {
-  display: flex;
-  flex-direction: column;
+.product-list {
+  /* display: flex;
+  flex-direction: column;  */
+  max-height: 250px;
+}
+
+:host {
+  max-height: 250px;
 }
