@@ -1,8 +1,13 @@
 <app-header></app-header>
+
+<app-product-list 
+  [products]="productList | filterByAnyFieldPipe: 86"
+></app-product-list>
+
 <!-- (MenuClick)="sidenav.toggleSideNavOpened()" -->
 
 <!-- [ngIf]="productList" [ngIfElse]="loading" -->
-<div ngIf="productList">
+<!-- <div ngIf="productList">
 
   <app-product-list appScroll [products]="productList"></app-product-list>
 </div>
@@ -12,7 +17,7 @@
     mode="indeterminate" 
     color="primary"
   ></mat-progress-spinner>
-</ng-template>
+</ng-template> -->
 
 <!-- <app-sidenav #sidenav>
   <ng-template #navigationTemplate>

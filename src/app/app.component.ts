@@ -10,6 +10,8 @@ import { ScrollDirective } from './shared/products/scroll/scroll.directive';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { productMock } from './shared/products/product.mock';
 import { IProduct } from './shared/products/product.interface';
+import { FilterPipe } from './shared/pipes/filter.pipe';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -25,11 +27,13 @@ import { IProduct } from './shared/products/product.interface';
     PopupHostComponent,
     ScrollDirective,
     MatProgressSpinnerModule,
+    FilterPipe,
+    CommonModule,
   ],
 })
 export class AppComponent implements OnInit {
   productList: IProduct[] = [];
-  showSpinner: boolean;
+  showSpinner = false;
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -41,10 +45,12 @@ export class AppComponent implements OnInit {
   title = 'e-shop';
   readonly applicationConfig = applicationConfigMock;
 
-  switchTemplate = false;
-  closeTemplate = true;
+  // switchTemplate = false;
+  // closeTemplate = true;
 
   constructor() {
+    this.productList = productMock;
+
     // setTimeout(() => {
     //   this.switchTemplate = !this.switchTemplate;
     //   this.closeTemplate = !this.closeTemplate;
@@ -60,11 +66,11 @@ export class AppComponent implements OnInit {
     //   this.closeTemplate = !this.closeTemplate;
     // }, 9000);
 
-    this.showSpinner = true;
+    // this.showSpinner = true;
 
-    setTimeout(() => {
-      this.productList = productMock;
-      this.showSpinner = false;
-    }, 4000);
+    // setTimeout(() => {
+    //   this.productList = productMock;
+    //   this.showSpinner = false;
+    // }, 4000);
   }
 }
