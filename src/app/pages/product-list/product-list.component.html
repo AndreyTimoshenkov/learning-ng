@@ -1,8 +1,10 @@
 <section class="product-list">
-  <app-card
-    *ngFor="let product of products"
-    class="card"
-    [product]="product"
-    (buy)="onProductBuy($event)"
-  ></app-card>
+  <div appScroll>
+    <app-card
+      *ngFor="let product of products"
+      class="card"
+      [product]="product"
+      (buy)="onProductBuy($event)"
+    ></app-card>
+  </div>
 </section>

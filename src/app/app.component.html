@@ -1,18 +1,19 @@
 <app-header></app-header>
 
 <app-product-list 
-  [products]="productList | filterByAnyFieldPipe: 86"
+  [products]="productList"
 ></app-product-list>
 
 <!-- (MenuClick)="sidenav.toggleSideNavOpened()" -->
 
 <!-- [ngIf]="productList" [ngIfElse]="loading" -->
-<!-- <div ngIf="productList">
-
-  <app-product-list appScroll [products]="productList"></app-product-list>
-</div>
-
-<ng-template #loading [ngIf]="showSpinner">
+<!-- <div ngIf="productList"> -->
+  
+  <!-- <app-product-list appScroll [products]="productList"></app-product-list> -->
+  <!-- </div> -->
+  
+  <!-- <ng-template #loading [ngIf]="showSpinner">
+  [products]="productList | filterByAnyFieldPipe: 86"
   <mat-progress-spinner
     mode="indeterminate" 
     color="primary"
