@@ -3,6 +3,7 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
+  HostBinding,
   HostListener,
   Output,
 } from '@angular/core';
@@ -11,10 +12,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Directive({
   selector: '[appScroll], appScroll',
   standalone: true,
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'app-scroll-directive',
-  },
 })
 export class ScrollDirective {
   constructor(element: ElementRef, destroy: DestroyRef) {
@@ -27,7 +24,7 @@ export class ScrollDirective {
   private prevScrollTop: number;
 
   @Output() notify: EventEmitter<TLoadDirection> = new EventEmitter<TLoadDirection>();
-
+  @HostBinding('class.app-scroll-directive')
   @HostListener('scroll', ['$event.target'])
   // Exhibit 1
   // onScroll({ scrollTop, clientHeight, scrollHeight }: HTMLElement) {
