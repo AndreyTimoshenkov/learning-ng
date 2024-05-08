@@ -1,5 +1,5 @@
 <section class="product-list">
-  <div appScroll>
+  <div appScroll (notify)="loadProducts($event)">
     <app-card
       *ngFor="let product of products"
       class="card"

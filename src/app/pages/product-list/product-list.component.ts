@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
 // import { productMock } from '../../shared/products/product.mock';
 import { IProduct } from '../../shared/products/product.interface';
-import { ScrollDirective } from 'src/app/shared/products/scroll/scroll.directive';
+import { ScrollDirective, TLoadDirection } from 'src/app/shared/products/scroll/scroll.directive';
 
 @Component({
   selector: 'app-product-list',
@@ -18,5 +18,9 @@ export class ProductListComponent {
 
   onProductBuy(id: IProduct['_id']) {
     console.log(id);
+  }
+
+  loadProducts(direction: TLoadDirection) {
+    console.log(`loading more products in ${direction} direction`);
   }
 }

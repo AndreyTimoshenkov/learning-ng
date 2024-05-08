@@ -1,6 +1,4 @@
-import { Directive, HostListener } from '@angular/core';
-// import { fromEvent } from 'rxjs';
-
+import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
 @Directive({
   selector: '[appScroll], appScroll',
   standalone: true,
@@ -10,27 +8,24 @@ import { Directive, HostListener } from '@angular/core';
   },
 })
 export class ScrollDirective {
-  // constructor() {
-  //   this.productList = document.getElementsByTagName(
-  //     'app-product-list',
-  //   );
-  //   console.log(this.productList);
-  // }
-  // productList;
+  private prevScrollTop = -1;
+
+  @Output() notify: EventEmitter<TLoadDirection> = new EventEmitter<TLoadDirection>();
 
   @HostListener('scroll', ['$event.target'])
-  onScroll({
-    scrollTop,
-    clientHeight,
-    scrollHeight,
-  }: HTMLElement) {
-    // onScroll(event: HTMLElement) {
-    // const scroll$ = fromEvent(this.productList, 'scroll');
-    // scroll$.subscribe((event) => {
-    //   console.log(event.target.);
-    // });
-    // const scroll$ = fromEvent(target, 'scroll');
-    // scroll$.subscribe((event) => console.log(event));
-    console.log(scrollTop, clientHeight, scrollHeight);
+  onScroll({ scrollTop, clientHeight, scrollHeight }: HTMLElement) {
+    const prevScrollTop = this.prevScrollTop;
+    this.prevScrollTop = scrollTop;
+
+    if (scrollHeight - clientHeight - scrollTop < borderOffset && scrollTop > prevScrollTop) {
+      console.log('time to load more, descending');
+      this.notify.emit('descending');
+    } else if (scrollTop < borderOffset && scrollTop < prevScrollTop) {
+      console.log('time to load more, ascending');
+      this.notify.emit('ascending');
+    }
   }
 }
+
+export const borderOffset = 100;
+export type TLoadDirection = 'ascending' | 'descending';
