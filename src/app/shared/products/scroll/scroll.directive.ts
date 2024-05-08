@@ -16,14 +16,15 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     class: 'app-scroll-directive',
   },
 })
-export class ScrollDirective /*implements OnDestroy*/ {
+export class ScrollDirective {
   constructor(element: ElementRef, destroy: DestroyRef) {
     this.elem = element.nativeElement;
     this.destroy = destroy;
+    this.prevScrollTop = 0;
   }
   private elem: HTMLElement;
   private destroy: DestroyRef;
-  private prevScrollTop = -1;
+  private prevScrollTop: number;
 
   @Output() notify: EventEmitter<TLoadDirection> = new EventEmitter<TLoadDirection>();
 
@@ -43,7 +44,6 @@ export class ScrollDirective /*implements OnDestroy*/ {
   // Exhibit 2
   onScroll() {
     const scroll$ = fromEvent(this.elem, 'scroll').pipe(
-      // debounceTime(1000),
       throttleTime(1000),
       map((event: Event) => {
         const { scrollTop, clientHeight, scrollHeight } = event.target as HTMLElement;
@@ -68,19 +68,6 @@ export class ScrollDirective /*implements OnDestroy*/ {
       .pipe(takeUntilDestroyed(this.destroy))
       .subscribe((direction: TLoadDirection) => this.notify.emit(direction));
   }
-
-  // shouldLoadTop(scrollTop: number, prevScrollTop: number): boolean {
-  //   return scrollTop < borderOffset && scrollTop < prevScrollTop;
-  // }
-
-  // shouldLoadBottom(
-  //   scrollHeight: number,
-  //   scrollTop: number,
-  //   clientHeight: number,
-  //   prevScrollTop: number,
-  // ): boolean {
-  //   return scrollHeight - scrollTop - clientHeight < borderOffset && scrollTop > prevScrollTop;
-  // }
 }
 
 export const borderOffset = 50;

@@ -1,8 +1,24 @@
 <app-header></app-header>
 
-<app-product-list 
-  [products]="productList"
-></app-product-list>
+<ng-container
+  [ngTemplateOutlet]="showSpinner ? loading : products"
+>
+
+</ng-container>
+
+<ng-template #products>
+  <app-product-list
+    [products]="productList | filterByAnyFieldPipe: 'LED'"
+    (spinner)="spin($event)"
+  ></app-product-list>
+</ng-template>
+
+<ng-template #loading>
+  <mat-progress-spinner
+    mode="indeterminate" 
+    color="primary"
+  ></mat-progress-spinner>
+</ng-template>
 
 <!-- (MenuClick)="sidenav.toggleSideNavOpened()" -->
 
@@ -11,13 +27,10 @@
   
   <!-- <app-product-list appScroll [products]="productList"></app-product-list> -->
   <!-- </div> -->
-  
-  <!-- <ng-template #loading [ngIf]="showSpinner">
+<!--   
+  <ng-template #loading [ngIf]="showSpinner">
   [products]="productList | filterByAnyFieldPipe: 86"
-  <mat-progress-spinner
-    mode="indeterminate" 
-    color="primary"
-  ></mat-progress-spinner>
+
 </ng-template> -->
 
 <!-- <app-sidenav #sidenav>

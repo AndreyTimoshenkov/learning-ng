@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CardComponent } from './pages/product-list/card/card.component';
@@ -31,46 +31,32 @@ import { CommonModule } from '@angular/common';
     CommonModule,
   ],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
   productList: IProduct[] = [];
   showSpinner = false;
-
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.productList = productMock;
-      this.showSpinner = false;
-    }, 4000);
-  }
-
   title = 'e-shop';
   readonly applicationConfig = applicationConfigMock;
 
-  // switchTemplate = false;
-  // closeTemplate = true;
-
   constructor() {
+    this.showSpinner = true;
     this.productList = productMock;
+  }
 
-    // setTimeout(() => {
-    //   this.switchTemplate = !this.switchTemplate;
-    //   this.closeTemplate = !this.closeTemplate;
-    // }, 3000);
-
-    // setTimeout(() => {
-    //   this.switchTemplate = !this.switchTemplate;
-    //   this.closeTemplate = !this.closeTemplate;
-    // }, 6000);
-
-    // setTimeout(() => {
-    //   this.switchTemplate = !this.switchTemplate;
-    //   this.closeTemplate = !this.closeTemplate;
-    // }, 9000);
-
+  ngOnChanges(): void {
     // this.showSpinner = true;
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 3000);
+  }
 
-    // setTimeout(() => {
-    //   this.productList = productMock;
-    //   this.showSpinner = false;
-    // }, 4000);
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 2000);
+  }
+
+  spin(value: boolean) {
+    this.showSpinner = value;
+    setTimeout(() => (this.showSpinner = false), 1500);
   }
 }
