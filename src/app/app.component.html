@@ -6,7 +6,7 @@
 
 <ng-template #products>
   <app-product-list
-    [products]="productList | filterByAnyFieldPipe: 'LED'"
+    [products]="productList"
     (spinner)="spin($event)"
   ></app-product-list>
 </ng-template>

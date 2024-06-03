@@ -46,17 +46,17 @@ export class AppComponent implements OnInit, OnChanges {
     // this.showSpinner = true;
     setTimeout(() => {
       this.showSpinner = false;
-    }, 3000);
+    }, 1000);
   }
 
   ngOnInit(): void {
     setTimeout(() => {
       this.showSpinner = false;
-    }, 2000);
+    }, 1000);
   }
 
   spin(value: boolean) {
     this.showSpinner = value;
-    setTimeout(() => (this.showSpinner = false), 1500);
+    setTimeout(() => (this.showSpinner = false), 500);
   }
 }
